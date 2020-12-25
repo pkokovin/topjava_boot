@@ -8,6 +8,8 @@ import ru.javaops.topjava.error.NotFoundException;
 import java.util.Optional;
 
 @UtilityClass
+@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+// https://github.com/JetBrains/intellij-community/blob/master/plugins/InspectionGadgets/src/inspectionDescriptions/OptionalUsedAsFieldOrParameterType.html
 public class ValidationUtil {
 
     public static void checkNew(HasId bean) {
