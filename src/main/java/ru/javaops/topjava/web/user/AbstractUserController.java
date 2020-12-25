@@ -2,6 +2,7 @@ package ru.javaops.topjava.web.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.DataBinder;
@@ -38,6 +39,7 @@ public abstract class AbstractUserController {
         return ResponseEntity.of(repository.findById(id));
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     public void delete(int id) {
         log.info("delete {}", id);
         checkSingleModification(repository.delete(id), "User id=" + id + " not found");
