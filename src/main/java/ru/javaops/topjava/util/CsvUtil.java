@@ -37,13 +37,9 @@ public class CsvUtil {
                 mealStrings.addAll(Files.readAllLines(current.toPath()));
             }
         }
-        for (String userString : userStrings) {
-            log.info("Parsing user string: " + userString);
-            parseToUser(userString, userRepository);
-        }
-        for (String mealString : mealStrings) {
-            log.info("Parsing meal string: " + mealString);
-            parseToMeal(mealString, userRepository, mealRepository);
-        }
+        log.info("Parsing users strings...");
+        parseToUser(userStrings, userRepository);
+        log.info("Parsing meals strings...");
+        parseToMeal(mealStrings, userRepository, mealRepository);
     }
 }
